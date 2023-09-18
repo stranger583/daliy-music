@@ -14,7 +14,7 @@ async function getData({searchParams}:Props) {
   const date =  (searchParams["date"] as string)?.padStart(2,"0")??today.getDate().toString().padStart(2,"0")
   const year =  (searchParams["year"]as string)?.padStart(2,"0")?? today.getFullYear().toString().padStart(2,"0")
 
-  const url = `http://localhost:8000/music/get/${year}${month}${date}`;
+  const url = `https://daily-music-api-h0qs.onrender.com/music/get/${year}${month}${date}`;
     const response = await fetch(url)
     const data = await response.json()
     return data
