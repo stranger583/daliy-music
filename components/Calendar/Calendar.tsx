@@ -72,7 +72,9 @@ function Calendar({ }) {
             <Container roundPosition={"bottom"}>
                 <div className='background-blur text-black '>
                     <div className='flex justify-between pt-10'>
-                        <h2 className=' flex gap-2 font-semibold text-xl items-center' onClick={handleToggleCalendar}>
+                        {/* <h2 className=' flex gap-2 font-semibold text-xl items-center' onClick={handleToggleCalendar}> */}
+                        <h2 className=' flex gap-2 font-semibold text-xl items-center' >
+
                             {months[+monthParams - 1]}
                             <DownArrowIcon />
                         </h2>

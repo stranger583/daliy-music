@@ -65,7 +65,7 @@ function Audio({ musicObj }: any) {
     return (
         <>
             <div className='pt-7 pb-5 px-5'>
-                <img src={musicObj?.imgUrl ?? Img.src} alt={musicObj?.imgUrl ?? Img.src} className='w-[268px] rounded-lg mx-auto mb-10 ' />
+                <img src={musicObj?.imgUrl ?? Img.src} alt={musicObj?.imgUrl ?? Img.src} className='w-[268px] h-[268px] object-cover rounded-lg mx-auto mb-10 ' />
                 <div className='flex justify-between'>
                     <div className='mb-5'>
                         <p className='text-lg font-semibold mb-1'>{musicObj?.name ?? 'Hope'}</p>

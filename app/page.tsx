@@ -34,14 +34,14 @@ export default async function Home({ searchParams }: Props) {
     <main className="flex min-h-screen flex-col items-center  max-lg:px-3  ">
       <Calendar />
       <Container>
-        <Message desc={musicObj?.desc} />
-      </Container>
-      <Container>
         <Weather />
       </Container>
       <Container>
-        <Recommend />
+        <Message desc={musicObj?.desc} />
       </Container>
+      {/* <Container>
+        <Recommend />
+      </Container> */}
       <Container>
         <Audio musicObj={musicObj} />
       </Container>

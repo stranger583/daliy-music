@@ -25,7 +25,7 @@ function DayList({ year,date, week, month }: Props) {
   }
 
   return (
-    <div className='pb-4'>
+    <div className='pb-4 cursor-pointer'>
       <div className='pb-3'>{week}</div>
       <div className={`font-semibold  w-8 h-8 rounded-full grid place-items-center ${isSelect}`} onClick={() => handleGetDate(year,month, date)}>{date}</div>
     </div>
