@@ -84,7 +84,7 @@ function LightBox({ handleCloseLightBox, IsOpenLightBox, lightBoxSituation }: Pr
     // }
 
     const handleSubmitMessageData = async (messageValue: I_MessageValue) => {
-        const MessageResponse = await fetch('https://daily-music-api-h0qs.onrender.com//message/post', {
+        const MessageResponse = await fetch('https://daily-music-api-h0qs.onrender.com/message/post', {
             method: 'POST',
             body: JSON.stringify({
                 id: 1,
