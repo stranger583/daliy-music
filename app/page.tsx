@@ -33,9 +33,9 @@ export default async function Home({ searchParams }: Props) {
   return (
     <main className="flex min-h-screen flex-col items-center  max-lg:px-3  ">
       <Calendar />
-      <Container>
+      {/* <Container>
         <Weather />
-      </Container>
+      </Container> */}
       <Container>
         <Message desc={musicObj?.desc} />
       </Container>

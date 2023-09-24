@@ -14,7 +14,7 @@ function Message({desc}:Props) {
   return (
     <div className='flex items-center text-sm gap-3'>
         <div>✨</div>
-        <p className={`grow ${descStyle}`}>{desc??"沒有推薦文案沒有推薦文案沒有推薦文案沒有推薦文案沒有推薦文案沒有推薦文案沒有推薦文案沒有推薦文案"}</p>
+        <p className={`grow ${descStyle}`}>{desc??"今天沒有推薦，是預設歌曲呦！！"}</p>
         <div className={`${arrowIconStyle} cursor-pointer`} onClick={()=>handleOpenDesc()}><DownArrowIcon/></div>
     </div>
   )

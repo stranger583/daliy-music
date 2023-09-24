@@ -94,7 +94,7 @@ function Audio({ musicObj }: any) {
                 onEnded={() => setIsPlaying(false)}
                 controls
                 className='absolute top-[-99999px] visible'
-                src={musicObj?.url ?? "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"}>
+                src={musicObj?.url ?? "https://sweethiphop.com/music/uploads/2023/07/NF_-_HOPE-sweethiphop.com.mp3?_=1"}>
             </audio>
         </>
     )
