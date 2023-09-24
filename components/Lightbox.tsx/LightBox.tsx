@@ -84,6 +84,7 @@ function LightBox({ handleCloseLightBox, IsOpenLightBox, lightBoxSituation }: Pr
     // }
 
     const handleSubmitMessageData = async (messageValue: I_MessageValue) => {
+        if(messageValue.user ==="" || messageValue.desc==="") return
         const MessageResponse = await fetch('https://daily-music-api-h0qs.onrender.com/message/post', {
             method: 'POST',
             body: JSON.stringify({
@@ -105,6 +106,7 @@ function LightBox({ handleCloseLightBox, IsOpenLightBox, lightBoxSituation }: Pr
     }
 
     const handleSubmitRecommend = async (recommendValue: I_RecommendValue) => {
+        if(recommendValue.user==="" || recommendValue.artist==="" ||recommendValue.song==="" || recommendValue.desc==="") return
         const RecommendResponse = await fetch('https://daily-music-api-h0qs.onrender.com/recommend/post', {
             method: 'POST',
             body: JSON.stringify({
