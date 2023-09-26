@@ -40,7 +40,6 @@ function Weather() {
         const weatherFetchHandler = async () => {
             const WeatherFetch = await fetch('https://api.openweathermap.org/data/2.5/weather?lat=25.056&lon=121.233&appid=b06ea3e9a3032e20ff8a1b52527883be&units=metric')
             const WeatherResponse = await WeatherFetch.json()
-            console.log('WeatherResponse', WeatherResponse, WeatherResponse.main.temp, WeatherResponse.weather[0].description, WeatherResponse.weather[0].main)
             setWeatherObj({
                 temp: `${Math.floor(WeatherResponse.main.temp)}`,
                 description: `${WeatherResponse.weather[0].description}`,

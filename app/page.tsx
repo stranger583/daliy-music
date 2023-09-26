@@ -4,6 +4,7 @@ import Audio from "@/components/Audio/Audio";
 import Message from "@/components/Message/Message";
 import Weather from "@/components/Weather/Weather";
 import Recommend from "@/components/Recommend/Recommend";
+import ButtonList from "@/components/ButtonList/ButtonList";
 
 
 
@@ -24,11 +25,12 @@ async function getData({ searchParams }: Props) {
   const year = (searchParams["year"] as string)?.padStart(2, "0") ?? t_year
   const urlDate = new Date( parseInt(year) , parseInt(month) - 1 ,parseInt(date))
 
-  const isOverDate = urlDate.getTime() > new Date().getTime()
+  const isOverDate = urlDate.getTime() >= new Date().getTime()
   const url = isOverDate ? 
-    `https://daily-music-api-h0qs.onrender.com/music/get/${year}${month}${date}`:
-    `https://daily-music-api-h0qs.onrender.com/music/get/${t_year}${t_month}${t_day}`
+    `https://daily-music-api-h0qs.onrender.com/music/get/${t_year}${t_month}${t_day}`:
+    `https://daily-music-api-h0qs.onrender.com/music/get/${year}${month}${date}`
     ;
+    console.log(isOverDate,url)
   const response = await fetch(url)
   const data = await response.json()
   return data
@@ -42,9 +44,6 @@ export default async function Home({ searchParams }: Props) {
   return (
     <main className="flex min-h-screen flex-col items-center  max-lg:px-3  ">
       <Calendar />
-      {/* <Container>
-        <Weather />
-      </Container> */}
       <Container>
         <Message desc={musicObj?.desc} />
       </Container>
@@ -54,6 +53,7 @@ export default async function Home({ searchParams }: Props) {
       <Container>
         <Audio musicObj={musicObj} />
       </Container>
+      <ButtonList/>
     </main>
   )
 }

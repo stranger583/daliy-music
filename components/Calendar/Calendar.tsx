@@ -28,12 +28,10 @@ function Calendar({ }) {
         mm: searchParams.get("month")? +monthParams-1:+monthParams,
         dd: +dateParams
     }
-    console.log(dateParamsObj)
     const [lightBoxSituation, setLightBoxSituation] = useState("share")
     const [IsOpenLightBox, setIsOpenLightBox] = useState(false);
     const [IsOpenCalendar, setIsOpenCalendar] = useState(false);
     const [lastPositionDay, setLastPositionDay] = useState(new Date(Number(yearParams),Number(monthParams)-1,Number(dateParams)))
-    console.log(lastPositionDay)
 
     const today = lastPositionDay
     let months = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec".split(",");
@@ -72,8 +70,8 @@ function Calendar({ }) {
             <Container roundPosition={"bottom"}>
                 <div className='background-blur text-black '>
                     <div className='flex justify-between pt-10'>
-                        {/* <h2 className=' flex gap-2 font-semibold text-xl items-center' onClick={handleToggleCalendar}> */}
-                        <h2 className=' flex gap-2 font-semibold text-xl items-center' >
+                        <h2 className=' flex gap-2 font-semibold text-xl items-center' onClick={handleToggleCalendar}>
+                        {/* <h2 className=' flex gap-2 font-semibold text-xl items-center' > */}
 
                             {months[+monthParams - 1]}
                             <DownArrowIcon />

@@ -44,14 +44,14 @@ function LightBox({ handleCloseLightBox, IsOpenLightBox, lightBoxSituation }: Pr
         desc: ""
     })
 
-    // const [MusicValue, setMusicValue] = useState({
-    //     name: "",
-    //     date: "",
-    //     artist: "",
-    //     desc: "",
-    //     url: "",
-    //     imgUrl: ""
-    // })
+    const [MusicValue, setMusicValue] = useState({
+        name: "",
+        date: "",
+        artist: "",
+        desc: "",
+        url: "",
+        imgUrl: ""
+    })
 
     const dayToString = () => {
         const today = new Date()
@@ -76,15 +76,16 @@ function LightBox({ handleCloseLightBox, IsOpenLightBox, lightBoxSituation }: Pr
         })
     }
 
-    // const handleMusicValue = (e: ChangeEvent<HTMLInputElement>, key: string) => {
-    //     setMusicValue({
-    //         ...MusicValue,
-    //         [key]: e.target.value
-    //     })
-    // }
+    const handleMusicValue = (e: ChangeEvent<HTMLInputElement>, key: string) => {
+        setMusicValue({
+            ...MusicValue,
+            [key]: e.target.value
+        })
+    }
 
     const handleSubmitMessageData = async (messageValue: I_MessageValue) => {
-        if(messageValue.user ==="" || messageValue.desc==="") return
+        if (messageValue.user === "" || messageValue.desc === "") return
+        handleCloseLightBox()
         const MessageResponse = await fetch('https://daily-music-api-h0qs.onrender.com/message/post', {
             method: 'POST',
             body: JSON.stringify({
@@ -98,7 +99,6 @@ function LightBox({ handleCloseLightBox, IsOpenLightBox, lightBoxSituation }: Pr
             headers: { "Content-Type": "application/json" }
         })
         const data = await MessageResponse.json()
-        handleCloseLightBox()
         setMessageValue({
             user: "",
             desc: ""
@@ -106,7 +106,8 @@ function LightBox({ handleCloseLightBox, IsOpenLightBox, lightBoxSituation }: Pr
     }
 
     const handleSubmitRecommend = async (recommendValue: I_RecommendValue) => {
-        if(recommendValue.user==="" || recommendValue.artist==="" ||recommendValue.song==="" || recommendValue.desc==="") return
+        if (recommendValue.user === "" || recommendValue.artist === "" || recommendValue.song === "" || recommendValue.desc === "") return
+        handleCloseLightBox()
         const RecommendResponse = await fetch('https://daily-music-api-h0qs.onrender.com/recommend/post', {
             method: 'POST',
             body: JSON.stringify({
@@ -122,7 +123,6 @@ function LightBox({ handleCloseLightBox, IsOpenLightBox, lightBoxSituation }: Pr
             headers: { "Content-Type": "application/json" }
         })
         const data = await RecommendResponse.json()
-        handleCloseLightBox()
         setRecommendValue({
             user: "",
             song: "",
@@ -131,34 +131,34 @@ function LightBox({ handleCloseLightBox, IsOpenLightBox, lightBoxSituation }: Pr
         })
     }
 
-    // const handleSubmitMusic = async (musicValue: I_MusicValue) => {
-    //     const RecommendResponse = await fetch('http://localhost:8000/music/post', {
-    //         method: 'POST',
-    //         body: JSON.stringify({
-    //             id: 1,
-    //             name: musicValue.name,
-    //             artist: musicValue.artist,
-    //             url: musicValue.url,
-    //             imgUrl: musicValue.imgUrl,
-    //             desc: musicValue.desc,
-    //             date: musicValue.date,
-    //             like: 0,
-    //             browser: 0,
+    const handleSubmitMusic = async (musicValue: I_MusicValue) => {
+        const RecommendResponse = await fetch('http://localhost:8000/music/post', {
+            method: 'POST',
+            body: JSON.stringify({
+                id: 1,
+                name: musicValue.name,
+                artist: musicValue.artist,
+                url: musicValue.url,
+                imgUrl: musicValue.imgUrl,
+                desc: musicValue.desc,
+                date: musicValue.date,
+                like: 0,
+                browser: 0,
 
-    //         }),
-    //         headers: { "Content-Type": "application/json" }
-    //     })
-    //     const data = await RecommendResponse.json()
-    //     // handleCloseLightBox()
-    //     setMusicValue({
-    //         name: "",
-    //         date: "",
-    //         artist: "",
-    //         desc: "",
-    //         url: "",
-    //         imgUrl: ""
-    //     })
-    // }
+            }),
+            headers: { "Content-Type": "application/json" }
+        })
+        const data = await RecommendResponse.json()
+        // handleCloseLightBox()
+        setMusicValue({
+            name: "",
+            date: "",
+            artist: "",
+            desc: "",
+            url: "",
+            imgUrl: ""
+        })
+    }
 
     if (IsOpenLightBox === false) return <></>
 
@@ -193,28 +193,38 @@ function LightBox({ handleCloseLightBox, IsOpenLightBox, lightBoxSituation }: Pr
                 <div className=' text-center p-2 border-t border-dark-gray font-semibold'><button onClick={() => handleSubmitMessageData(messageValue)}>DONE</button></div>
             </div>
         </div>
-    // const PostMusicComponent =
-    //     <div className={`bg2 bg-black/25 fixed z-30 top-0 right-0 overflow-hidden h-screen w-screen`}>
-    //         <div className={`glass w-[300px] rounded-lg max-h-max fixed top-0 left-0 right-0 bottom-0 m-auto`}>
-    //             <div className='text-right pt-3 px-3 flex justify-between align-middle font-semibold'>
-    //                 Share
-    //                 <button onClick={() => handleCloseLightBox()}>x</button>
-    //             </div>
-    //             <div className='p-6 flex flex-col justify-center gap-2'>
-    //                 <InputText placeholder='name' value={MusicValue.name} onChange={e => handleMusicValue(e, "name")} />
-    //                 <InputText placeholder='artist' value={MusicValue.artist} onChange={e => handleMusicValue(e, "artist")} />
-    //                 <InputText placeholder='url' value={MusicValue.url} onChange={e => handleMusicValue(e, "url")} />
-    //                 <InputText placeholder='imgUrl' value={MusicValue.imgUrl} onChange={e => handleMusicValue(e, "imgUrl")} />
-    //                 <InputText placeholder='desc' value={MusicValue.desc} onChange={e => handleMusicValue(e, "desc")} />
-    //                 <InputText placeholder='date' value={MusicValue.date} onChange={e => handleMusicValue(e, "date")} />
-    //             </div>
-    //             <div className=' text-center p-2 border-t border-dark-gray font-semibold'><button onClick={() => handleSubmitMusic(MusicValue)}>DONE</button></div>
-    //         </div>
-    //     </div>
+    const PostMusicComponent =
+        <div className={`bg2 bg-black/25 fixed z-30 top-0 right-0 overflow-hidden h-screen w-screen`}>
+            <div className={`glass w-[300px] rounded-lg max-h-max fixed top-0 left-0 right-0 bottom-0 m-auto`}>
+                <div className='text-right pt-3 px-3 flex justify-between align-middle font-semibold'>
+                    PostMusic
+                    <button onClick={() => handleCloseLightBox()}>x</button>
+                </div>
+                <div className='p-6 flex flex-col justify-center gap-2'>
+                    <InputText placeholder='name' value={MusicValue.name} onChange={e => handleMusicValue(e, "name")} />
+                    <InputText placeholder='artist' value={MusicValue.artist} onChange={e => handleMusicValue(e, "artist")} />
+                    <InputText placeholder='url' value={MusicValue.url} onChange={e => handleMusicValue(e, "url")} />
+                    <InputText placeholder='imgUrl' value={MusicValue.imgUrl} onChange={e => handleMusicValue(e, "imgUrl")} />
+                    <InputText placeholder='desc' value={MusicValue.desc} onChange={e => handleMusicValue(e, "desc")} />
+                    <InputText placeholder='date' value={MusicValue.date} onChange={e => handleMusicValue(e, "date")} />
+                </div>
+                <div className=' text-center p-2 border-t border-dark-gray font-semibold'><button onClick={() => handleSubmitMusic(MusicValue)}>DONE</button></div>
+            </div>
+        </div>
+
+    const lightBox = (key: string) => {
+        switch (key) {
+            case 'share':
+                return ShareComponent
+            case 'message':
+                return MessageComponent
+            default:
+                return PostMusicComponent
+        }
+    }
 
     return (
-        lightBoxSituation === "share" ? ShareComponent : MessageComponent
-        // lightBoxSituation === "share" ? ShareComponent : PostMusicComponent
+        lightBox(lightBoxSituation)
     )
 }
 

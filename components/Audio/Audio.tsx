@@ -56,7 +56,7 @@ function Audio({ musicObj }: any) {
         setIsPlaying(false)
         setCurTime("")
 
-    },[musicObj])
+    }, [musicObj])
 
     // console.log(musicObj)
     // const isLikeStyle = !isLike ? "islikeStyle" : ""
@@ -64,19 +64,19 @@ function Audio({ musicObj }: any) {
 
     return (
         <>
-            <div className='pt-7 pb-5 px-5'>
-                <img src={musicObj?.imgUrl ?? Img.src} alt={musicObj?.imgUrl ?? Img.src} className='w-[268px] h-[268px] object-cover rounded-lg mx-auto mb-10 ' />
-                <div className='flex justify-between'>
-                    <div className='mb-5'>
-                        <p className='text-lg font-semibold mb-1'>{musicObj?.name ?? 'Hope'}</p>
-                        <p className='text-base font-semibold text-dark-gray'>{musicObj?.artist ?? 'NF'}</p>
+            <div className='p-4'>
+                <div className='flex items-center mb-4'>
+                    <img src={musicObj?.imgUrl ?? Img.src} alt={musicObj?.imgUrl ?? Img.src} className='w-[56px] h-[56px] object-cover rounded-lg mr-3 ' />
+                    <div className=''>
+                        <p className='text-[13px] font-semibold mb-1'>{musicObj?.name ?? 'Hope'}</p>
+                        <p className='text-xs font-semibold text-dark-gray'>{musicObj?.artist ?? 'NF'}</p>
                     </div>
                     {/* <button className={`${isLikeStyle}`} onClick={() => setIsLike(prev => !prev)}><LikeIcon /></button> */}
                 </div>
-                <div className='mb-6'>
+                <div className='mb-2'>
                     <AudioTimeBar
                         handleMaxChange={handleMaxChange}
-                        curDuration={curTime? +curTime / duration * 100:0}
+                        curDuration={curTime ? +curTime / duration * 100 : 0}
                     ></AudioTimeBar>
                     <div className='flex justify-between'>
                         <div className='text-xs'>{calcTime(+curTime)}</div>
